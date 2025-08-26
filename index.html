@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Student Management System — Demo</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>🎓 Student Management</h1>
+    <p class="subtitle">Static HTML + CSS demo (no JavaScript)</p>
+  </header>
+
+  <main class="container">
+    <!-- Quick actions -->
+    <section class="card actions" aria-labelledby="actions-title">
+      <div class="card-header">
+        <h2 id="actions-title">Quick Actions</h2>
+      </div>
+      <div class="card-body actions-grid">
+        <a class="btn primary" href="#form">Add Student</a>
+        <button class="btn" disabled title="Requires JS/backend to work">Import CSV</button>
+        <button class="btn" disabled title="Requires JS/backend to work">Export CSV</button>
+        <button class="btn danger" disabled title="Requires JS/backend to work">Delete Selected</button>
+      </div>
+    </section>
+
+    <!-- Add/Edit Student Form -->
+    <section class="card" aria-labelledby="form-title" id="form">
+      <div class="card-header">
+        <h2 id="form-title">Student Form</h2>
+        <p class="muted">This form is for layout demo. Hook it to your backend or add JS to make it work.</p>
+      </div>
+      <div class="card-body">
+        <form action="/students" method="post" class="grid-form">
+          <div class="field">
+            <label for="sid">Student ID</label>
+            <input id="sid" name="student_id" type="text" placeholder="e.g., S-2025-001" required />
+          </div>
+
+          <div class="field">
+            <label for="name">Full Name</label>
+            <input id="name" name="name" type="text" placeholder="e.g., Ananya Rao" required />
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="e.g., ananya@university.edu" required />
+          </div>
+
+          <div class="field">
+            <label for="program">Program</label>
+            <select id="program" name="program" required>
+              <option value="" selected disabled>Choose program</option>
+              <option>B.Tech - CSE</option>
+              <option>B.Tech - ECE</option>
+              <option>B.Sc - Mathematics</option>
+              <option>MBA</option>
+              <option>MCA</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="semester">Semester</label>
+            <select id="semester" name="semester" required>
+              <option value="" selected disabled>Choose semester</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="status">Status</label>
+            <select id="status" name="status" required>
+              <option>Active</option>
+              <option>On Leave</option>
+              <option>Graduated</option>
+              <option>Dropped</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="dob">Date of Birth</label>
+            <input id="dob" name="dob" type="date" />
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" placeholder="+91 98765 43210" />
+          </div>
+
+          <div class="form-actions">
+            <button class="btn primary" type="submit" title="Connect to backend to save">Save</button>
+            <button class="btn ghost" type="reset">Reset</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Filters + Table -->
+    <section class="card" aria-labelledby="list-title">
+      <div class="card-header">
+        <h2 id="list-title">Students</h2>
+        <form class="toolbar" action="#" method="get" role="search">
+          <input type="search" name="q" placeholder="Search by name or ID" aria-label="Search students" />
+          <select name="filter-program" aria-label="Filter by program">
+            <option value="">All Programs</option>
+            <option>B.Tech - CSE</option>
+            <option>B.Tech - ECE</option>
+            <option>B.Sc - Mathematics</option>
+            <option>MBA</option>
+            <option>MCA</option>
+          </select>
+          <select name="filter-status" aria-label="Filter by status">
+            <option value="">All Statuses</option>
+            <option>Active</option>
+            <option>On Leave</option>
+            <option>Graduated</option>
+            <option>Dropped</option>
+          </select>
+          <button class="btn" disabled title="Add JS to make filters work">Apply</button>
+        </form>
+      </div>
+
+      <div class="card-body">
+        <div class="table-wrap">
+          <table class="table" aria-describedby="list-title">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Program</th>
+                <th scope="col">Sem</th>
+                <th scope="col">Status</th>
+                <th scope="col" class="actions-col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="ID">S-2025-001</td>
+                <td data-label="Name">Ananya Rao</td>
+                <td data-label="Email"><a href="mailto:ananya@university.edu">ananya@university.edu</a></td>
+                <td data-label="Program">B.Tech - CSE</td>
+                <td data-label="Sem">5</td>
+                <td data-label="Status"><span class="badge success">Active</span></td>
+                <td data-label="Actions" class="row-actions">
+                  <button class="btn xs" disabled title="Requires JS/backend">View</button>
+                  <button class="btn xs" disabled title="Requires JS/backend">Edit</button>
+                  <button class="btn xs danger" disabled title="Requires JS/backend">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td data-label="ID">S-2025-014</td>
+                <td data-label="Name">Rahul Mehta</td>
+                <td data-label="Email"><a href="mailto:rahul@university.edu">rahul@university.edu</a></td>
+                <td data-label="Program">MBA</td>
+                <td data-label="Sem">2</td>
+                <td data-label="Status"><span class="badge warn">On Leave</span></td>
+                <td data-label="Actions" class="row-actions">
+                  <button class="btn xs" disabled>View</button>
+                  <button class="btn xs" disabled>Edit</button>
+                  <button class="btn xs danger" disabled>Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td data-label="ID">S-2025-021</td>
+                <td data-label="Name">Meera Iyer</td>
+                <td data-label="Email"><a href="mailto:meera@university.edu">meera@university.edu</a></td>
+                <td data-label="Program">B.Sc - Mathematics</td>
+                <td data-label="Sem">6</td>
+                <td data-label="Status"><span class="badge neutral">Graduated</span></td>
+                <td data-label="Actions" class="row-actions">
+                  <button class="btn xs" disabled>View</button>
+                  <button class="btn xs" disabled>Edit</button>
+                  <button class="btn xs danger" disabled>Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <nav class="pagination" aria-label="Pagination">
+          <a class="page-link disabled" href="#" aria-disabled="true">Prev</a>
+          <a class="page-link current" href="#" aria-current="page">1</a>
+          <a class="page-link" href="#">2</a>
+          <a class="page-link" href="#">3</a>
+          <a class="page-link" href="#">Next</a>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>© 2025 Student Management Demo. Built with semantic HTML & modern CSS.</p>
+  </footer>
+</body>
+</html>

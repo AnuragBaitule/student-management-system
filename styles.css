@@ -1,0 +1,288 @@
+/* ================================
+   Student Management System — CSS
+   Modern, responsive, accessible
+   ================================= */
+:root{
+  --bg: #0b1020;
+  --card: #121931;
+  --muted: #9fb0c3;
+  --text: #e6edf6;
+  --primary: #5b8eff;
+  --primary-ink: #0b1a4a;
+  --success: #36c37e;
+  --warn: #f5b14c;
+  --danger: #ff6b6b;
+  --border: #243055;
+  --ring: #7193ff;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --pad: 18px;
+  --gap: 16px;
+  --font: 'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
+}
+
+*{ box-sizing: border-box; }
+html, body{
+  height: 100%;
+  background: radial-gradient(1200px 600px at 10% -10%, #132041, transparent),
+              radial-gradient(1000px 800px at 120% 0%, #0f1a36, transparent),
+              var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  line-height: 1.4;
+}
+
+a{ color: var(--primary); text-decoration: none; }
+a:hover{ text-decoration: underline; }
+
+.app-header{
+  max-width: 1100px;
+  margin: 32px auto 8px auto;
+  padding: 0 var(--pad);
+}
+.app-header h1{
+  font-size: clamp(24px, 4vw, 34px);
+  margin: 0 0 4px;
+  font-weight: 700;
+}
+.subtitle{
+  color: var(--muted);
+  margin: 0;
+}
+
+.container{
+  max-width: 1100px;
+  margin: 0 auto 48px auto;
+  padding: 0 var(--pad);
+  display: grid;
+  gap: var(--gap);
+}
+
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0));
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.card-header, .card-body, .card-footer{
+  padding: calc(var(--pad) + 2px);
+}
+.card-header{
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: var(--gap);
+}
+.card-header h2{
+  margin: 0;
+  font-size: clamp(18px, 2.2vw, 22px);
+}
+.muted{ color: var(--muted); }
+
+/* Quick Actions */
+.actions-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--gap);
+}
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: #162347;
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform .06s ease, box-shadow .15s ease, border-color .15s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,.25);
+}
+.btn:hover{ transform: translateY(-1px); border-color: #2f4483; }
+.btn:active{ transform: translateY(0); }
+.btn:disabled{ opacity: .55; cursor: not-allowed; }
+.btn.primary{
+  background: linear-gradient(180deg, #5b8eff, #527ff0);
+  color: #0a1022;
+  border-color: transparent;
+}
+.btn.ghost{
+  background: transparent;
+}
+.btn.danger{
+  background: linear-gradient(180deg, #ff7d7d, #ff6b6b);
+  color: #3a0a0a;
+  border-color: transparent;
+}
+.btn.xs{
+  font-size: 12px;
+  padding: 6px 10px;
+  box-shadow: none;
+}
+
+/* Form */
+.grid-form{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gap);
+}
+.field{
+  grid-column: span 6;
+  display: grid;
+  gap: 8px;
+}
+.field label{
+  font-weight: 600;
+}
+.field input, .field select, .toolbar input, .toolbar select{
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #0f1530;
+  color: var(--text);
+  outline: none;
+}
+.field input:focus, .field select:focus, .toolbar input:focus, .toolbar select:focus{
+  border-color: var(--ring);
+  box-shadow: 0 0 0 4px rgba(113,147,255,.15);
+}
+.form-actions{
+  grid-column: 1 / -1;
+  display: flex;
+  gap: var(--gap);
+  justify-content: flex-end;
+  padding-top: 4px;
+}
+
+/* Toolbar */
+.toolbar{
+  display: grid;
+  grid-template-columns: 1fr 220px 180px auto;
+  gap: var(--gap);
+  align-items: center;
+}
+.toolbar .btn{ height: 44px; }
+
+/* Table */
+.table-wrap{
+  width: 100%;
+  overflow: auto hidden;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+.table{
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+  background: #0c1229;
+}
+.table th, .table td{
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: middle;
+}
+.table thead th{
+  position: sticky;
+  top: 0;
+  background: #0d1530;
+  z-index: 1;
+  font-size: 14px;
+  letter-spacing: .02em;
+}
+.badge{
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+}
+.badge.success{ background: rgba(54,195,126,.2); color: #9af5c7; border-color: rgba(54,195,126,.35); }
+.badge.warn{ background: rgba(245,177,76,.15); color: #ffd9a1; border-color: rgba(245,177,76,.35); }
+.badge.neutral{ background: rgba(153,170,190,.18); color: #d7e0ee; border-color: rgba(153,170,190,.3); }
+
+.actions-col{ width: 220px; }
+.row-actions{ display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* Pagination */
+.card-footer{
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: flex-end;
+}
+.pagination{
+  display: inline-flex;
+  gap: 6px;
+}
+.page-link{
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #0f1530;
+}
+.page-link.current{
+  background: var(--primary);
+  color: var(--primary-ink);
+  font-weight: 700;
+}
+.page-link.disabled{
+  opacity: .5;
+  pointer-events: none;
+}
+
+/* Footer */
+.app-footer{
+  max-width: 1100px;
+  margin: 18px auto 48px;
+  padding: 0 var(--pad);
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  .grid-form .field{ grid-column: span 12; }
+  .toolbar{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 640px){
+  .toolbar{
+    grid-template-columns: 1fr;
+  }
+  .actions-grid{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Mobile table -> cards (optional) */
+@media (max-width: 560px){
+  .table{ min-width: 0; }
+  .table thead{ display: none; }
+  .table, .table tbody, .table tr, .table td{ display: block; width: 100%; }
+  .table tr{ margin-bottom: 12px; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .table td{
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    padding-left: 44%;
+  }
+  .table td:last-child{ border-bottom: none; }
+  .table td::before{
+    content: attr(data-label);
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    width: 40%;
+    font-weight: 600;
+    color: var(--muted);
+  }
+  .row-actions{ padding: 8px 12px; }
+}
